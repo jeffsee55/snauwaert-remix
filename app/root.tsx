@@ -1,4 +1,6 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import Navigation from "~/components/Navigation";
+import Footer from "~/components/Navigation/footer";
 
 import {
   Links,
@@ -14,7 +16,7 @@ export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Snauwaert AU",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -36,10 +38,12 @@ export default function App() {
         ></link>
       </head>
       <body>
+        <Navigation />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
+        <Footer />
       </body>
     </html>
   );

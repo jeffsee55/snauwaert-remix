@@ -42,9 +42,9 @@ const Slant = ({ className }: { className: string }) => {
       className={className}
       style={{
         position: "absolute",
-        right: "-25px",
+        right: "-15px",
         top: "0px",
-        width: "35px",
+        width: "25px",
         height: "100%",
         transform: "skewX(-22deg)",
         transition: "all 0.35s ease",
