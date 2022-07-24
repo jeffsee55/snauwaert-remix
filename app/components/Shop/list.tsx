@@ -21,18 +21,13 @@ import {
   Disclosure,
   Menu,
   Popover,
-  Tab,
   Transition,
 } from "@headlessui/react";
-import {
-  MenuIcon,
-  SearchIcon,
-  ShoppingCartIcon,
-  UserIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import { XIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { theme } from "~/theme/text";
+import { ProductConnection } from ".tina/__generated__/types";
+import { useFetcher } from "@remix-run/react";
 
 const currencies = ["CAD", "USD", "AUD", "EUR", "GBP"];
 const navigation = {
@@ -99,33 +94,24 @@ const navigation = {
     { name: "Stores", href: "#" },
   ],
 };
-const breadcrumbs = [
-  { id: 1, name: "Objects", href: "#" },
-  { id: 2, name: "Workspace", href: "#" },
-  { id: 3, name: "Sale", href: "#" },
-];
 const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
+  { name: "Category", href: "#", current: true },
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
+  { name: "Product Name", href: "#", current: false },
 ];
 const filters = [
   {
     id: "category",
     name: "Category",
     options: [
-      { value: "new-arrivals", label: "All New Arrivals", checked: false },
-      { value: "tees", label: "Tees", checked: false },
-      { value: "objects", label: "Objects", checked: true },
-      { value: "sweatshirts", label: "Sweatshirts", checked: false },
-      { value: "pants-shorts", label: "Pants & Shorts", checked: false },
+      { value: "racquets", label: "Racquets", checked: false },
+      { value: "accessories", label: "Accesories", checked: false },
     ],
   },
   {
-    id: "color",
-    name: "Color",
+    id: "productLine",
+    name: "Product Line",
     options: [
       { value: "white", label: "White", checked: false },
       { value: "beige", label: "Beige", checked: false },
@@ -136,95 +122,24 @@ const filters = [
     ],
   },
   {
-    id: "sizes",
-    name: "Sizes",
-    options: [
-      { value: "xs", label: "XS", checked: false },
-      { value: "s", label: "S", checked: false },
-      { value: "m", label: "M", checked: false },
-      { value: "l", label: "L", checked: false },
-      { value: "xl", label: "XL", checked: false },
-      { value: "2xl", label: "2XL", checked: false },
-    ],
+    id: "jr",
+    name: "Jr Racquets",
+    options: [{ value: "jr", label: "JR", checked: false }],
   },
 ];
 const activeFilters = [{ value: "objects", label: "Objects" }];
-const products = [
-  {
-    id: 1,
-    name: "Earthen Bottle",
-    href: "#",
-    price: "$48",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-    imageAlt:
-      "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
-  },
-  {
-    id: 2,
-    name: "Nomad Tumbler",
-    href: "#",
-    price: "$35",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-    imageAlt:
-      "Olive drab green insulated bottle with flared screw lid and flat top.",
-  },
-  {
-    id: 3,
-    name: "Focus Paper Refill",
-    href: "#",
-    price: "$89",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
-    imageAlt:
-      "Person using a pen to cross a task off a productivity paper card.",
-  },
-  {
-    id: 4,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-    imageAlt:
-      "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  // More products...
-];
-const footerNavigation = {
-  products: [
-    { name: "Bags", href: "#" },
-    { name: "Tees", href: "#" },
-    { name: "Objects", href: "#" },
-    { name: "Home Goods", href: "#" },
-    { name: "Accessories", href: "#" },
-  ],
-  company: [
-    { name: "Who we are", href: "#" },
-    { name: "Sustainability", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Terms & Conditions", href: "#" },
-    { name: "Privacy", href: "#" },
-  ],
-  customerService: [
-    { name: "Contact", href: "#" },
-    { name: "Shipping", href: "#" },
-    { name: "Returns", href: "#" },
-    { name: "Warranty", href: "#" },
-    { name: "Secure Payments", href: "#" },
-    { name: "FAQ", href: "#" },
-    { name: "Find a store", href: "#" },
-  ],
-};
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export function ShopList() {
+export function ShopList({
+  data,
+}: {
+  data: { productConnection: ProductConnection };
+}) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const filtersFetcher = useFetcher();
 
   return (
     <div className="bg-gray-50">
@@ -336,7 +251,7 @@ export function ShopList() {
         </Transition.Root>
 
         <main>
-          <div className="bg-white">
+          {/* <div className="bg-white">
             <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
               <h1 className={`text-3xl text-gray-900 ${theme.text.headers}`}>
                 Snauwaert Racquets
@@ -347,7 +262,7 @@ export function ShopList() {
                 these sale items before we run out.
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Filters */}
           <section aria-labelledby="filter-heading">
@@ -355,7 +270,7 @@ export function ShopList() {
               Filters
             </h2>
 
-            <div className="relative z-10 bg-white border-b border-gray-200 pb-4">
+            <div className="relative z-10 bg-white border-b border-gray-200 py-4">
               <div className="max-w-7xl mx-auto px-4 flex items-center justify-between sm:px-6 lg:px-8">
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
@@ -441,7 +356,10 @@ export function ShopList() {
                             leaveTo="transform opacity-0 scale-95"
                           >
                             <Popover.Panel className="origin-top-right absolute right-0 mt-2 bg-white rounded-md shadow-2xl p-4 ring-1 ring-black ring-opacity-5 focus:outline-none">
-                              <form className="space-y-4">
+                              <filtersFetcher.Form
+                                className="space-y-4"
+                                method="get"
+                              >
                                 {section.options.map((option, optionIdx) => (
                                   <div
                                     key={option.value}
@@ -452,6 +370,11 @@ export function ShopList() {
                                       name={`${section.id}[]`}
                                       defaultValue={option.value}
                                       type="checkbox"
+                                      onChange={(event) => {
+                                        filtersFetcher.submit(
+                                          event.target.form
+                                        );
+                                      }}
                                       defaultChecked={option.checked}
                                       className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
                                     />
@@ -463,7 +386,7 @@ export function ShopList() {
                                     </label>
                                   </div>
                                 ))}
-                              </form>
+                              </filtersFetcher.Form>
                             </Popover.Panel>
                           </Transition>
                         </Popover>
@@ -533,7 +456,7 @@ export function ShopList() {
             </h2>
 
             <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-              {products.map((product) => (
+              {/* {products.map((product) => (
                 <a key={product.id} href={product.href} className="group">
                   <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                     <img
@@ -547,7 +470,34 @@ export function ShopList() {
                     {product.price}
                   </p>
                 </a>
-              ))}
+              ))} */}
+              {data?.productConnection.edges?.map((edge) => {
+                const product = edge?.node;
+                if (!product) {
+                  throw new Error("Expected result to have a product");
+                }
+                return (
+                  <a
+                    key={product.id}
+                    href={`/products/${product.slug}`}
+                    className="group"
+                  >
+                    <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                      <img
+                        src={product.imageSrc}
+                        alt={product.imageAlt}
+                        className="w-full h-full object-center object-cover group-hover:opacity-75"
+                      />
+                    </div>
+                    <h3 className="mt-4 text-sm text-gray-700">
+                      {product.name}
+                    </h3>
+                    <p className="mt-1 text-lg font-medium text-gray-900">
+                      {product.price}
+                    </p>
+                  </a>
+                );
+              })}
             </div>
           </section>
         </main>
