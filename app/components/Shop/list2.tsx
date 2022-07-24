@@ -38,6 +38,11 @@ const filters = [
       { value: "bags", label: "Bags", checked: true },
       { value: "balls", label: "Balls", checked: true },
       { value: "grips", label: "Grips", checked: true },
+      {
+        value: "racquet-accessories",
+        label: "Racquet Accessories",
+        checked: true,
+      },
       { value: "strings", label: "Strings", checked: true },
     ],
   },
