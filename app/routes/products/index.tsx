@@ -1,12 +1,8 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { ShopList } from "~/components/Shop/list2";
-import {
-  ExperimentalGetTinaClient,
-  ProductFilter,
-} from "../../../.tina/__generated__/types";
-
-const client = ExperimentalGetTinaClient();
+import { client } from "_tina/__generated__/client";
+import type { ProductFilter } from "_tina/__generated__/types";
 
 export const loader: LoaderFunction = async (args) => {
   const url = new URL(args.request.url);
@@ -21,7 +17,7 @@ export const loader: LoaderFunction = async (args) => {
   }
   const sort = url.searchParams.get("sort") || "category";
   const order = url.searchParams.get("order") || "first";
-  const res = await client.productConnection({
+  const res = await client.queries.productConnection({
     filter: filters,
     [order]: 10,
     sort: sort,
@@ -30,6 +26,7 @@ export const loader: LoaderFunction = async (args) => {
 };
 
 export default function List() {
-  const { data } = useLoaderData();
-  return <ShopList data={data} />;
+  const props = useLoaderData();
+  console.log("data", props);
+  return <ShopList data={props.data} />;
 }

@@ -22,6 +22,8 @@ import {
 } from "@heroicons/react/solid";
 import { RadioGroup } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/outline";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import type { Product as ProductType } from "_tina/__generated__/types";
 
 const product = {
   name: "Everyday Ruck Snack",
@@ -38,8 +40,14 @@ const product = {
     { id: 2, name: "Bags", href: "#" },
   ],
   sizes: [
-    { name: "18L", description: "Perfect for a reasonable amount of snacks." },
-    { name: "20L", description: "Enough room for a serious amount of snacks." },
+    {
+      name: "Strung",
+      description: "Perfect for a reasonable amount of snacks.",
+    },
+    {
+      name: "Unstrung",
+      description: "Enough room for a serious amount of snacks.",
+    },
   ],
 };
 const reviews = { average: 4, totalCount: 1624 };
@@ -48,7 +56,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export function Product() {
+export function Product(props: ProductType) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
 
   return (
@@ -86,7 +94,7 @@ export function Product() {
 
           <div className="mt-4">
             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {product.name}
+              {props.name}
             </h1>
           </div>
 
@@ -96,9 +104,7 @@ export function Product() {
             </h2>
 
             <div className="flex items-center">
-              <p className="text-lg text-gray-900 sm:text-xl">
-                {product.price}
-              </p>
+              <p className="text-lg text-gray-900 sm:text-xl">${props.price}</p>
 
               <div className="ml-4 pl-4 border-l border-gray-300">
                 <h2 className="sr-only">Reviews</h2>
@@ -128,7 +134,9 @@ export function Product() {
             </div>
 
             <div className="mt-4 space-y-6">
-              <p className="text-base text-gray-500">{product.description}</p>
+              <div className="text-base text-gray-500 prose">
+                <TinaMarkdown content={props.body} />
+              </div>
             </div>
 
             <div className="mt-6 flex items-center">
@@ -147,8 +155,8 @@ export function Product() {
         <div className="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
           <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
             <img
-              src={product.imageSrc}
-              alt={product.imageAlt}
+              src={props.imageSrc}
+              alt={props.imageAlt}
               className="w-full h-full object-center object-cover"
             />
           </div>
@@ -166,7 +174,7 @@ export function Product() {
                 {/* Size selector */}
                 <RadioGroup value={selectedSize} onChange={setSelectedSize}>
                   <RadioGroup.Label className="block text-sm font-medium text-gray-700">
-                    Size
+                    Stringing
                   </RadioGroup.Label>
                   <div className="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {product.sizes.map((size) => (
@@ -217,7 +225,7 @@ export function Product() {
                   href="#"
                   className="group inline-flex text-sm text-gray-500 hover:text-gray-700"
                 >
-                  <span>What size should I buy?</span>
+                  <span>Why strings are right for me?</span>
                   <QuestionMarkCircleIcon
                     className="flex-shrink-0 ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"

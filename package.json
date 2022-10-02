@@ -4,6 +4,7 @@
   "scripts": {
     "build": "run-s \"build:*\"",
     "tinacms": "tinacms",
+    "tina-dev": "tinacms dev",
     "build:css": "npm run generate:css -- --minify",
     "build:remix": "remix build",
     "dev": "run-p \"dev:*\"",
@@ -19,16 +20,17 @@
     "@remix-run/vercel": "^1.6.4",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
-    "@tinacms/cli": "0.0.0-20220722174326",
+    "@tailwindcss/typography": "^0.5.7",
     "@vercel/node": "^1.15.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "tinacms": "0.0.0-20220722174326"
+    "tinacms": "^0.69.14"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.6.4",
     "@remix-run/eslint-config": "^1.6.4",
     "@remix-run/serve": "^1.6.4",
+    "@tinacms/cli": "^0.61.20",
     "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.17",
     "eslint": "^8.15.0",

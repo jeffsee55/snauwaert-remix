@@ -4,6 +4,7 @@ name: Vitas 100 Lite
 slug: vitas-100-lite
 price: 310
 imageSrc: "/uploads/racquets/vitas100.jpg"
+images:
   - blob:https://golden-coast-track-club-test.myshopify.com/927a9308-39ee-43c8-b7b2-5934b5500064
   - blob:https://golden-coast-track-club-test.myshopify.com/9852bcea-8040-42f9-8a0d-beffecadd9f9
   - blob:https://golden-coast-track-club-test.myshopify.com/724a102e-5fe9-42e5-87ce-bb4254711479
