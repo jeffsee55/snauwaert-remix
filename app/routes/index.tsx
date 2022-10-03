@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import { ButtonLink } from "~/components/Button";
 import { theme } from "~/theme/text";
 
@@ -150,7 +151,10 @@ export default function Example() {
             </div>
 
             <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
-              <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2">
+              <Link
+                to="/products?categories[]=racquets"
+                className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2"
+              >
                 <img
                   src="/uploads/grid/6.jpg"
                   alt="Two models wearing women's black cotton crewneck tee and off-white cotton crewneck tee."
@@ -163,17 +167,15 @@ export default function Example() {
                 <div className="p-6 flex items-end">
                   <div>
                     <h3 className="font-semibold text-white">
-                      <a href="#">
-                        <span className="absolute inset-0" />
-                        Racquets
-                      </a>
+                      <span className="absolute inset-0" />
+                      Racquets
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">
                       Shop now
                     </p>
                   </div>
                 </div>
-              </div>
+              </Link>
               <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:relative sm:aspect-none sm:h-full">
                 <img
                   src="/uploads/grid/2.jpg"

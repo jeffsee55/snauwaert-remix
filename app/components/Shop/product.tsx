@@ -20,10 +20,11 @@ import {
   QuestionMarkCircleIcon,
   StarIcon,
 } from "@heroicons/react/solid";
-import { RadioGroup } from "@headlessui/react";
 import { ShieldCheckIcon } from "@heroicons/react/outline";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { Product as ProductType } from "_tina/__generated__/types";
+import { Disclosure, RadioGroup, Tab } from "@headlessui/react";
+import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/react/outline";
 
 const product = {
   name: "Everyday Ruck Snack",
@@ -39,14 +40,59 @@ const product = {
     { id: 1, name: "Travel", href: "#" },
     { id: 2, name: "Bags", href: "#" },
   ],
-  sizes: [
+  strings: [
+    {
+      name: "Unstrung",
+      description: "Enough room for a serious amount of snacks.",
+    },
     {
       name: "Strung",
       description: "Perfect for a reasonable amount of snacks.",
     },
+  ],
+  stringOptions: [
     {
       name: "Unstrung",
-      description: "Enough room for a serious amount of snacks.",
+    },
+    {
+      name: "Black Beam 1.25mm",
+    },
+    {
+      name: "Black Beam 1.35mm",
+    },
+    {
+      name: "White Beam 1.25mm",
+    },
+    {
+      name: "Sunny Core 1.25mm",
+    },
+    {
+      name: "Yellow Beam 1.15mm",
+    },
+    {
+      name: "Yellow Beam 1.20mm",
+    },
+  ],
+  sizes: [
+    {
+      name: '4" (0)',
+      inStock: true,
+    },
+    {
+      name: '1/8" (1)',
+      inStock: true,
+    },
+    {
+      name: '1/4" (2)',
+      inStock: true,
+    },
+    {
+      name: '3/8" (3)',
+      inStock: true,
+    },
+    {
+      name: '1/2" (4)',
+      inStock: true,
     },
   ],
 };
@@ -57,7 +103,8 @@ function classNames(...classes: string[]) {
 }
 
 export function Product(props: ProductType) {
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [selectedString, setSelectedString] = useState(product.sizes[0]);
+  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   return (
     <div className="bg-white">
@@ -153,13 +200,7 @@ export function Product(props: ProductType) {
 
         {/* Product image */}
         <div className="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
-          <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
-            <img
-              src={props.imageSrc}
-              alt={props.imageAlt}
-              className="w-full h-full object-center object-cover"
-            />
-          </div>
+          <ImageGallery images={props.images} />
         </div>
 
         {/* Product form */}
@@ -170,14 +211,13 @@ export function Product(props: ProductType) {
             </h2>
 
             <form>
-              <div className="sm:flex sm:justify-between">
-                {/* Size selector */}
-                <RadioGroup value={selectedSize} onChange={setSelectedSize}>
-                  <RadioGroup.Label className="block text-sm font-medium text-gray-700">
+              {/* <div className="sm:flex sm:justify-between">
+                <RadioGroup value={selectedString} onChange={setSelectedString}>
+                  <RadioGroup.Label className="sr-only">
                     Stringing
                   </RadioGroup.Label>
                   <div className="mt-1 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {product.sizes.map((size) => (
+                    {product.strings.map((size) => (
                       <RadioGroup.Option
                         as="div"
                         key={size.name}
@@ -219,18 +259,86 @@ export function Product(props: ProductType) {
                     ))}
                   </div>
                 </RadioGroup>
+              </div> */}
+              <div className="">
+                <label
+                  htmlFor="location"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Strings
+                </label>
+                <select
+                  id="location"
+                  name="location"
+                  className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  defaultValue="Canada"
+                >
+                  {product.stringOptions.map((option) => {
+                    return <option key={option.name}>{option.name}</option>;
+                  })}
+                </select>
               </div>
               <div className="mt-4">
                 <a
                   href="#"
                   className="group inline-flex text-sm text-gray-500 hover:text-gray-700"
                 >
-                  <span>Why strings are right for me?</span>
+                  <span>Which strings are right for me?</span>
                   <QuestionMarkCircleIcon
                     className="flex-shrink-0 ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
                 </a>
+              </div>
+              {/* Size picker */}
+              <div className="mt-8">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-sm font-medium text-gray-900">Size</h2>
+                  <a
+                    href="#"
+                    className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                  >
+                    See sizing chart
+                  </a>
+                </div>
+
+                <RadioGroup
+                  value={selectedSize}
+                  onChange={setSelectedSize}
+                  className="mt-2"
+                >
+                  <RadioGroup.Label className="sr-only">
+                    {" "}
+                    Choose a size{" "}
+                  </RadioGroup.Label>
+                  <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
+                    {product.sizes.map((size) => (
+                      <RadioGroup.Option
+                        key={size.name}
+                        value={size}
+                        className={({ active, checked }) =>
+                          classNames(
+                            size.inStock
+                              ? "cursor-pointer focus:outline-none"
+                              : "opacity-25 cursor-not-allowed",
+                            active
+                              ? "ring-2 ring-offset-2 ring-indigo-500"
+                              : "",
+                            checked
+                              ? "bg-indigo-600 border-transparent text-white hover:bg-indigo-700"
+                              : "bg-white border-gray-200 text-gray-900 hover:bg-gray-50",
+                            "border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1"
+                          )
+                        }
+                        disabled={!size.inStock}
+                      >
+                        <RadioGroup.Label as="span">
+                          {size.name}
+                        </RadioGroup.Label>
+                      </RadioGroup.Option>
+                    ))}
+                  </div>
+                </RadioGroup>
               </div>
               <div className="mt-10">
                 <button
@@ -258,3 +366,52 @@ export function Product(props: ProductType) {
     </div>
   );
 }
+
+const ImageGallery = (props) => {
+  return (
+    <Tab.Group as="div" className="flex flex-col-reverse">
+      <div className="mx-auto mt-6 w-full max-w-2xl block lg:max-w-none">
+        <Tab.List className="grid grid-cols-4 gap-6">
+          {props.images.map((image) => (
+            <Tab
+              key={image}
+              className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+            >
+              {({ selected }) => (
+                <>
+                  <span className="sr-only"> {image} </span>
+                  <span className="absolute inset-0 overflow-hidden rounded-md">
+                    <img
+                      src={image}
+                      alt=""
+                      className="h-full w-full object-cover object-center"
+                    />
+                  </span>
+                  <span
+                    className={classNames(
+                      selected ? "ring-indigo-500" : "ring-transparent",
+                      "pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2"
+                    )}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
+            </Tab>
+          ))}
+        </Tab.List>
+      </div>
+
+      <Tab.Panels className="aspect-w-1 aspect-h-1 w-full">
+        {props.images.map((image) => (
+          <Tab.Panel key={image}>
+            <img
+              src={image}
+              alt={image}
+              className="h-full w-full object-contain object-center sm:rounded-lg"
+            />
+          </Tab.Panel>
+        ))}
+      </Tab.Panels>
+    </Tab.Group>
+  );
+};

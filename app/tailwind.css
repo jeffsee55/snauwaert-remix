@@ -1533,6 +1533,10 @@ select {
   margin-right: 0.5rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -1603,6 +1607,10 @@ select {
 
 .h-7 {
   height: 1.75rem;
+}
+
+.h-24 {
+  height: 6rem;
 }
 
 .w-44 {
@@ -1744,6 +1752,10 @@ select {
   cursor: pointer;
 }
 
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
 .appearance-none {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -1762,8 +1774,16 @@ select {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
+}
+
+.flex-col-reverse {
+  flex-direction: column-reverse;
 }
 
 .flex-wrap {
@@ -1796,6 +1816,14 @@ select {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .gap-y-6 {
@@ -2059,9 +2087,19 @@ select {
   --tw-gradient-to: #000;
 }
 
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
 }
 
 .object-center {
@@ -2180,6 +2218,11 @@ select {
   padding-bottom: 0.375rem;
 }
 
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .pt-16 {
   padding-top: 4rem;
 }
@@ -2290,6 +2333,10 @@ select {
 
 .pl-4 {
   padding-left: 1rem;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
 }
 
 .text-left {
@@ -2471,6 +2518,10 @@ select {
   opacity: 1;
 }
 
+.opacity-25 {
+  opacity: 0.25;
+}
+
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
@@ -2517,8 +2568,16 @@ select {
   --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
 }
 
+.ring-transparent {
+  --tw-ring-color: transparent;
+}
+
 .ring-opacity-5 {
   --tw-ring-opacity: 0.05;
+}
+
+.ring-offset-2 {
+  --tw-ring-offset-width: 2px;
 }
 
 .filter {
@@ -2602,6 +2661,11 @@ select {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gray-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -2669,13 +2733,27 @@ select {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
+.focus\:ring:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
 .focus\:ring-indigo-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
 }
 
+.focus\:ring-opacity-50:focus {
+  --tw-ring-opacity: 0.5;
+}
+
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
+}
+
+.focus\:ring-offset-4:focus {
+  --tw-ring-offset-width: 4px;
 }
 
 .focus\:ring-offset-gray-50:focus {
@@ -2854,6 +2932,10 @@ select {
     max-width: 28rem;
   }
 
+  .sm\:flex-1 {
+    flex: 1 1 0%;
+  }
+
   .sm\:translate-x-8 {
     --tw-translate-x: 2rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2870,6 +2952,14 @@ select {
 
   .sm\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .sm\:grid-rows-2 {
@@ -2915,6 +3005,10 @@ select {
     --tw-space-y-reverse: 0;
     margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+  }
+
+  .sm\:rounded-lg {
+    border-radius: 0.5rem;
   }
 
   .sm\:px-6 {
@@ -2980,6 +3074,11 @@ select {
   .sm\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
   .sm\:opacity-0 {
@@ -3101,6 +3200,10 @@ select {
 
   .lg\:max-w-lg {
     max-width: 32rem;
+  }
+
+  .lg\:max-w-none {
+    max-width: none;
   }
 
   .lg\:flex-1 {

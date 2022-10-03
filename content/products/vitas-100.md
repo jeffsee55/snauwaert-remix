@@ -3,12 +3,14 @@ productId: 1
 name: Vitas 100
 slug: vitas-100
 price: 310
-imageSrc: "/uploads/racquets/vitas100.jpg"
+imageSrc: "/uploads/racquets/vitas-100.jpeg"
 images:
-  - blob:https://golden-coast-track-club-test.myshopify.com/43fb0287-e0b2-45b5-a777-6862412ce0b5
-  - blob:https://golden-coast-track-club-test.myshopify.com/abef272c-f773-4a2e-bcb8-508cb882de41
-  - blob:https://golden-coast-track-club-test.myshopify.com/5522a00b-fe30-42ce-be52-7f708d85203d
-  - blob:https://golden-coast-track-club-test.myshopify.com/1d6ebe8b-b983-4ade-9983-4a300170499f
+  - "/uploads/racquets/vitas-100.jpeg"
+  - "/uploads/racquets/vitas-100-2.jpeg"
+  - "/uploads/racquets/vitas-100-3.jpeg"
+  - "/uploads/racquets/vitas-100-4.jpeg"
 category: "racquets"
 productLine: "vitas"
 ---
+
+The Vitas 100 tennis racquet is recommended for intermediate to advanced players who mostly hit in the upper half of the frame.

@@ -33,27 +33,27 @@ const navigation = {
       featured: [
         {
           name: "All Racquets",
-          href: "/product/racquets",
+          href: "products?categories[]=racquets",
           imageSrc: "/uploads/vitas-pair.jpg",
           imageAlt: "",
         },
         {
           name: "Vitas",
-          href: "#",
+          href: "products?categories[]=racquets&productLine[]=vitas",
           imageSrc: "/uploads/racquets/vitas100.jpg",
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Grinta",
-          href: "#",
+          href: "products?categories[]=racquets&productLine[]=grinta",
           imageSrc: "/uploads/racquets/grinta100.jpg",
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Junior",
-          href: "#",
+          href: "products?categories[]=racquets&productLine[]=jr",
           imageSrc: "/uploads/racquets/jr.jpg",
           imageAlt:
             "Model wearing minimalist watch with black wristband and white watch face.",

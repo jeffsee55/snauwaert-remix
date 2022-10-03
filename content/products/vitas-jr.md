@@ -3,9 +3,12 @@ productId: 1
 name: Vitas Jr
 slug: vitas-jr
 price: 310
-imageSrc: "/uploads/racquets/vitas100.jpg"
+imageSrc: "/uploads/racquets/vitas-100-junior.jpeg"
 images:
-  - blob:https://golden-coast-track-club-test.myshopify.com/a6066e31-7b47-4ef2-a277-06d4fa528707
+  - "/uploads/racquets/vitas-100-junior-.jpeg"
+  - "/uploads/racquets/vitas-100-junior-2.jpeg"
 category: "racquets"
-productLine: "vitas"
+productLine: "jr"
 ---
+
+With the same technical features as the adult racquet, the Vitas 100 Jr is perfect for junior players under the age of 13 looking to improve their game by focusing on power.

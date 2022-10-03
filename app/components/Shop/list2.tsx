@@ -20,7 +20,13 @@ import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon, PlusSmIcon } from "@heroicons/react/solid";
 import { ProductConnection } from ".tina/__generated__/types";
-import { Form, useFetcher, useLocation, useParams } from "@remix-run/react";
+import {
+  Form,
+  Link,
+  useFetcher,
+  useLocation,
+  useParams,
+} from "@remix-run/react";
 import { theme } from "~/theme/text";
 
 const sortOptions = [
@@ -340,8 +346,9 @@ export function ShopList({
                     throw new Error("Expected result to have a product");
                   }
                   return (
-                    <div
-                      key={product.id}
+                    <Link
+                      to={`/products/${product.slug}`}
+                      key={product.productId}
                       className="group relative bg-white border border-gray-200 rounded-lg flex flex-col overflow-hidden"
                     >
                       <div className="aspect-w-3 aspect-h-4 bg-gray-200 group-hover:opacity-75 sm:aspect-none sm:h-96">
@@ -373,7 +380,7 @@ export function ShopList({
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

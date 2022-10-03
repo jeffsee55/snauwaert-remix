@@ -13,7 +13,7 @@
     "generate:css": "npx tailwindcss -i ./styles/tailwind.css -o ./app/tailwind.css"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.6",
+    "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^1.0.6",
     "@remix-run/node": "^1.6.4",
     "@remix-run/react": "^1.6.4",

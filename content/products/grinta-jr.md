@@ -3,10 +3,14 @@ productId: 4
 name: Grinta Jr
 slug: grinta-jr
 price: 169
-imageSrc: "/uploads/grid/1.jpg"
+imageSrc: "/uploads/racquets/grinta-100-junior.jpeg"
 images:
-  - blob:https://golden-coast-track-club-test.myshopify.com/2b73d3a8-b7cd-4b50-ba55-db4e4dde13ef
-  - blob:https://golden-coast-track-club-test.myshopify.com/79098938-4446-4965-8952-69912857be70
+  - "/uploads/racquets/grinta-100-junior-.jpeg"
+  - "/uploads/racquets/grinta-100-junior-2.jpeg"
+  - "/uploads/racquets/grinta-100-junior-3.jpeg"
+  - "/uploads/racquets/grinta-100-junior-4.jpeg"
 category: "racquets"
 productLine: "jr"
 ---
+
+With the same technical features as the adult racquet, the Grinta 100 Jr is ideal for junior players under 13 who are looking to improve their game by focusing on control.
