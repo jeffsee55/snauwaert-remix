@@ -5,7 +5,7 @@ slug: grinta-jr
 price: 169
 imageSrc: "/uploads/racquets/grinta-100-junior.jpeg"
 images:
-  - "/uploads/racquets/grinta-100-junior-.jpeg"
+  - "/uploads/racquets/grinta-100-junior.jpeg"
   - "/uploads/racquets/grinta-100-junior-2.jpeg"
   - "/uploads/racquets/grinta-100-junior-3.jpeg"
   - "/uploads/racquets/grinta-100-junior-4.jpeg"

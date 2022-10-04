@@ -224,7 +224,7 @@ export function Product(props: ProductType) {
                         value={size}
                         className={({ active }) =>
                           classNames(
-                            active ? "ring-2 ring-indigo-500" : "",
+                            active ? "ring-2 ring-yellow-500" : "",
                             "relative block border border-gray-300 rounded-lg p-4 cursor-pointer focus:outline-none"
                           )
                         }
@@ -247,7 +247,7 @@ export function Product(props: ProductType) {
                               className={classNames(
                                 active ? "border" : "border-2",
                                 checked
-                                  ? "border-indigo-500"
+                                  ? "border-yellow-500"
                                   : "border-transparent",
                                 "absolute -inset-px rounded-lg pointer-events-none"
                               )}
@@ -270,7 +270,7 @@ export function Product(props: ProductType) {
                 <select
                   id="location"
                   name="location"
-                  className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-yellow-500 focus:outline-none focus:ring-yellow-500 sm:text-sm"
                   defaultValue="Canada"
                 >
                   {product.stringOptions.map((option) => {
@@ -296,7 +296,7 @@ export function Product(props: ProductType) {
                   <h2 className="text-sm font-medium text-gray-900">Size</h2>
                   <a
                     href="#"
-                    className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                    className="text-sm font-medium text-yellow-600 hover:text-yellow-500"
                   >
                     See sizing chart
                   </a>
@@ -322,10 +322,10 @@ export function Product(props: ProductType) {
                               ? "cursor-pointer focus:outline-none"
                               : "opacity-25 cursor-not-allowed",
                             active
-                              ? "ring-2 ring-offset-2 ring-indigo-500"
+                              ? "ring-2 ring-offset-2 ring-yellow-500"
                               : "",
                             checked
-                              ? "bg-indigo-600 border-transparent text-white hover:bg-indigo-700"
+                              ? "bg-yellow-600 border-transparent text-white hover:bg-yellow-700"
                               : "bg-white border-gray-200 text-gray-900 hover:bg-gray-50",
                             "border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1"
                           )
@@ -343,7 +343,7 @@ export function Product(props: ProductType) {
               <div className="mt-10">
                 <button
                   type="submit"
-                  className="w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                  className="w-full bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500"
                 >
                   Add to bag
                 </button>
@@ -389,7 +389,7 @@ const ImageGallery = (props) => {
                   </span>
                   <span
                     className={classNames(
-                      selected ? "ring-indigo-500" : "ring-transparent",
+                      selected ? "ring-yellow-500" : "ring-transparent",
                       "pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2"
                     )}
                     aria-hidden="true"

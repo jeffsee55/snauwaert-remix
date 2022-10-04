@@ -5,7 +5,7 @@ slug: vitas-jr
 price: 310
 imageSrc: "/uploads/racquets/vitas-100-junior.jpeg"
 images:
-  - "/uploads/racquets/vitas-100-junior-.jpeg"
+  - "/uploads/racquets/vitas-100-junior.jpeg"
   - "/uploads/racquets/vitas-100-junior-2.jpeg"
 category: "racquets"
 productLine: "jr"

@@ -21,6 +21,11 @@ export default defineStaticConfig({
         label: "Product",
         path: "content/products",
         format: "md",
+        ui: {
+          router: ({ document }) => {
+            return `/products/${document._sys.filename}`;
+          },
+        },
         fields: [
           {
             type: "number",

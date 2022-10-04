@@ -22,7 +22,7 @@ export const loader: LoaderFunction = async (args) => {
     [order]: 10,
     sort: sort,
   });
-  return { ok: "etster", ...res };
+  return res;
 };
 
 export default function List() {

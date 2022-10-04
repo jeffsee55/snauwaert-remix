@@ -24,6 +24,7 @@ import {
   ShoppingBagIcon,
   XIcon,
 } from "@heroicons/react/outline";
+import { Link } from "@remix-run/react";
 
 const currencies = ["CAD", "USD", "AUD", "EUR", "GBP"];
 const navigation = {
@@ -33,27 +34,27 @@ const navigation = {
       featured: [
         {
           name: "All Racquets",
-          href: "products?categories[]=racquets",
+          href: "/products?categories[]=racquets",
           imageSrc: "/uploads/vitas-pair.jpg",
           imageAlt: "",
         },
         {
           name: "Vitas",
-          href: "products?categories[]=racquets&productLine[]=vitas",
+          href: "/products?categories[]=racquets&productLine[]=vitas",
           imageSrc: "/uploads/racquets/vitas100.jpg",
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Grinta",
-          href: "products?categories[]=racquets&productLine[]=grinta",
+          href: "/products?categories[]=racquets&productLine[]=grinta",
           imageSrc: "/uploads/racquets/grinta100.jpg",
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
         },
         {
           name: "Junior",
-          href: "products?categories[]=racquets&productLine[]=jr",
+          href: "/products?categories[]=racquets&productLine[]=jr",
           imageSrc: "/uploads/racquets/jr.jpg",
           imageAlt:
             "Model wearing minimalist watch with black wristband and white watch face.",
@@ -177,8 +178,8 @@ export default function Example() {
                                   className="object-center object-cover"
                                 />
                               </div>
-                              <a
-                                href={item.href}
+                              <Link
+                                to={item.href}
                                 className="mt-6 block text-sm font-medium text-gray-900"
                               >
                                 <span
@@ -186,7 +187,7 @@ export default function Example() {
                                   aria-hidden="true"
                                 />
                                 {item.name}
-                              </a>
+                              </Link>
                               <p
                                 aria-hidden="true"
                                 className="mt-1 text-sm text-gray-500"
@@ -204,12 +205,12 @@ export default function Example() {
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a
-                        href={page.href}
+                      <Link
+                        to={page.href}
                         className="-m-2 p-2 block font-medium text-gray-900"
                       >
                         {page.name}
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
